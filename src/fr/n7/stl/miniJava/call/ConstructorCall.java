@@ -20,6 +20,15 @@ import fr.n7.stl.util.Logger;
 import java.util.*;
 
 public class ConstructorCall implements Expression {
+	
+	Instanciation instanciation;
+
+    public Instanciation getInstanciation() {
+		return instanciation;
+	}
+	public void setInstanciation(Instanciation instanciation) {
+		this.instanciation = instanciation;
+	}
 
 	List<Expression> parametres;
 	private Type type;

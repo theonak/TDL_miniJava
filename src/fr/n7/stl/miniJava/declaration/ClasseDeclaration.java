@@ -115,7 +115,6 @@ public class ClasseDeclaration implements Type , ContainerDeclaration{
     }
 
     public boolean collect(HierarchicalScope<Declaration> _scope) {
-    	//System.out.println("ClasseDelcaration : collect");
     	_scope.register(new VariableDeclaration("currentclass", this, null));
     	boolean result = true;
         if(_scope.knows(this.getName())){

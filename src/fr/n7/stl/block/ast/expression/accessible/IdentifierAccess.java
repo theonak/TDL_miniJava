@@ -11,6 +11,7 @@ import fr.n7.stl.block.ast.instruction.declaration.VariableDeclaration;
 import fr.n7.stl.block.ast.instruction.declaration.ParameterDeclaration;
 import fr.n7.stl.block.ast.type.declaration.LabelDeclaration;
 import fr.n7.stl.miniJava.declaration.ClasseDeclaration;
+import fr.n7.stl.miniJava.definition.Attribut;
 import fr.n7.stl.block.ast.scope.Declaration;
 import fr.n7.stl.block.ast.scope.HierarchicalScope;
 import fr.n7.stl.block.ast.type.Type;
@@ -30,6 +31,17 @@ public class IdentifierAccess extends AbstractIdentifier implements AccessibleEx
 	private Declaration declaration;
 	protected AbstractAccess expression;
 	protected Type type; //used only for enumeration type
+	
+	protected Attribut attribut;
+
+	public Attribut getAttribut() {
+		return attribut;
+	}
+
+	public void setAttribut(Attribut attribut) {
+		this.attribut = attribut;
+	}
+	
 	/**
 	 * Creates a variable use expression Abstract Syntax Tree node.
 	 * @param _name Name of the used variable.
