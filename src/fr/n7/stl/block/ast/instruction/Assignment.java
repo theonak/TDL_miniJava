@@ -32,6 +32,7 @@ public class Assignment implements Instruction, Expression {
 	public Assignment(AssignableExpression _assignable, Expression _value) {
 		this.assignable = _assignable;
 		this.value = _value;
+		//System.out.println("Assignement: Assignement, " + " " + this.toString() +" " + this.value.toString() + " has type " +  this.value.getType());
 		/* This attribute will be assigned to the appropriate value by the resolve action */
 	}
 
@@ -72,8 +73,8 @@ public class Assignment implements Instruction, Expression {
 	 */
 	@Override
 	public boolean checkType() {
-		System.out.println("Assignement: checktype, " + this.assignable.getType() + " " + this.value.toString() );
-		boolean result = this.assignable.getType().compatibleWith(this.value.getType());
+		System.out.println("Assignement: checktype, " + this.assignable.getType() + " " + this.getType() );
+		boolean result = this.assignable.getType().compatibleWith(this.getType());
 		if (result){
 			return true;
 		}else {

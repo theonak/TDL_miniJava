@@ -125,20 +125,27 @@ public class Constructor implements Declaration, Instruction {
 
     @Override
     public boolean collect(HierarchicalScope<Declaration> _scope) {
-        return this.bloc.collect(_scope);
+        boolean _result = true;
+    	for (ParameterDeclaration param: this.parameterDeclarationList) {
+        	//_result = _result && param.collect(_scope);
+        }
+    	return this.bloc.collect(_scope);
     }
 
     @Override
     public boolean resolve(HierarchicalScope<Declaration> _scope) {
-        if(_scope.knows(this.getName())){
+    	System.out.println("Constructor: resolve, " + this.getName() + " known ?" + _scope.knows(this.getName()));
+    	if(_scope.knows(this.getName())){
             ContainerDeclaration pod = (ContainerDeclaration)_scope.get(this.getName());
             this.instanciation.setDeclaration(pod);
+            System.out.println("Constructor: resolve, " + this.getName() + " =? " + this.instanciation.getDeclaration().getName());
             if(this.getName().equals(this.instanciation.getDeclaration().getName())) {
                 boolean result = true;
                 HierarchicalScope<Declaration> scope = new SymbolTable(_scope);
+                System.out.println("Constructor: resolve, parameterDeclarationList null ? " + this.parameterDeclarationList);
                 if (this.parameterDeclarationList != null)
                     for (ParameterDeclaration param : this.parameterDeclarationList) {
-//                       System.out.println("from Constructor : " +param.getName());
+                    	//System.out.println("from Constructor : " +param.getName());
                         result = param.resolve(scope) && result;
 
                     }

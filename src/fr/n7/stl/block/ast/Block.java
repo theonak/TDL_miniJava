@@ -76,7 +76,7 @@ public class Block {
 		}
 		return _result;*/
 		
-		
+		boolean _result = true;
 		this.tds = new SymbolTable(_scope);
         for (Instruction _instruction : this.instructions) {
         	if (_instruction != null) {
@@ -84,7 +84,6 @@ public class Block {
 	            	Logger.error("here" + _instruction);
 	                return false;
 	            }
-	            
 	            if (_instruction instanceof ConstantDeclaration) {
 	                if (this.tds.accepts((ConstantDeclaration) _instruction)) {
 	                    tds.register((ConstantDeclaration) _instruction);
@@ -119,9 +118,13 @@ public class Block {
 	                    return false;
 	                }
 	            }
+	            else {
+	            	_result = _result && _instruction.collect(this.tds);
+	            }
             }
 		}
-        return true;
+        //System.out.println(this.tds.toString());
+        return _result;
 	}
 
 	/**
@@ -139,7 +142,7 @@ public class Block {
 			_result = _result && _instruction.resolve(_table);
 		}
 		return _result && this.checkType();*/
-		
+		boolean _result = true;
 		for (Instruction _instruction : this.instructions) {
 			 if (_instruction instanceof TypeDeclaration) {
 				 Type instructionType =((TypeDeclaration)_instruction).getType();
@@ -155,6 +158,8 @@ public class Block {
                         }
                     }
 				}
+			} else {
+				_result = _result && _instruction.resolve(this.tds);
 			}
 			 
 			if (_instruction != null) {
@@ -163,7 +168,7 @@ public class Block {
                 return false;
             }}
 		}
-        return true;
+		return _result ;
 	}
 
 	/**
@@ -171,11 +176,10 @@ public class Block {
 	 * @return Synthesized True if the instruction is well typed, False if not.
 	 */	
 	public boolean checkType() {
+		boolean result = true;
 		for (Instruction _instruction : this.instructions) {
 			System.out.println("Block : checktype, " + _instruction.toString());
-			//System.out.println(" hello " + _instruction.checkType());
             if (!_instruction.checkType()) {
-            	System.out.println(" hello ");
                 Logger.error("Type Error in '' " + _instruction + " ''.");
                 return false;
             }

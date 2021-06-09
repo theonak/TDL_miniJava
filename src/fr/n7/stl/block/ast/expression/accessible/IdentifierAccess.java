@@ -64,8 +64,11 @@ public class IdentifierAccess extends AbstractIdentifier implements AccessibleEx
 	@Override
 	public boolean collect(HierarchicalScope<Declaration> _scope) {
 		/* This is the backward resolve part. */
+		//System.out.println("IdentifierAccess : collect, " + this.name + " known ? " + ((HierarchicalScope<Declaration>)_scope).knows(this.name));
 		if (((HierarchicalScope<Declaration>)_scope).knows(this.name)) {
 			this.declaration = _scope.get(this.name);
+			//System.out.println(this.declaration.getType());
+			
 			/* These kinds are handled by partial resolve. */
 			if (declaration instanceof VariableDeclaration) {
 				
@@ -82,6 +85,7 @@ public class IdentifierAccess extends AbstractIdentifier implements AccessibleEx
 	public boolean resolve(HierarchicalScope<Declaration> _scope) {
 		/* This is the full resolve part that complements the backward resolve. */
 		/* If the resolution has not been done by the backward resolve */
+		//System.out.println("IdentifierAccess: resolve, " + this.expression.toString());
 		if  (this.expression == null) {
 			if (((HierarchicalScope<Declaration>)_scope).knows(this.name)) {
 				Declaration _declaration = _scope.get(this.name);
@@ -122,11 +126,13 @@ public class IdentifierAccess extends AbstractIdentifier implements AccessibleEx
 	 */
 	@Override
 	public Type getType() {
+		//System.out.println("IdentifierAccess: getType, " + this.declaration);
 		if (this.expression != null) {
 			return this.expression.getType();
 		} else if (this.type != null){
 			return this.type;
 		}else {
+			System.out.println("Identifieraccess: getType, " + this.declaration);
 			if (this.declaration instanceof ClasseDeclaration)
 				System.out.println("yes");
 			return null;

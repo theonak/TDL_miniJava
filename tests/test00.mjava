@@ -13,8 +13,8 @@ class A {
 		this.v = -11;
 	}
 	
-	public A(int _v) {
-		this.v = _v;
+	public A(int _w) {
+		this.v = _w;
 	}
 	
 }

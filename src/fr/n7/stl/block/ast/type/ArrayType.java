@@ -38,7 +38,12 @@ public class ArrayType implements Type {
 	public boolean compatibleWith(Type _other) {
 		if (_other instanceof ArrayType) {
 			return this.element.compatibleWith(((ArrayType)_other).element);
-		} else {
+		} 
+		else if(_other instanceof SequenceType) {
+			SequenceType _seqType = (SequenceType) _other;
+			return _seqType.compatibleWith(this);
+		}
+		else {
 			return false;
 		}
 	}

@@ -151,65 +151,70 @@ Program ::=
 			{: 
 				
 			SymbolTable tds = new SymbolTable();
-				boolean resolveResult = true;
-				boolean collectResult= true;
-				for(ContainerDeclaration cd : elements){
-				//System.out.println(cd);
-                    if (cd instanceof ClasseDeclaration){
-                    	
-                        ClasseDeclaration cld = (ClasseDeclaration) cd;
-                        collectResult =  cld.collect(tds) && collectResult;
-                                		
-                     }else if (cd instanceof MainClass){
-                     	MainClass id = (MainClass) cd;
-                        collectResult = id.collect(tds) && collectResult;
-                     } else {
-                      	InterfaceDeclaration id = (InterfaceDeclaration) cd;
-                        collectResult = id.collect(tds) && collectResult;
-				     }
-				}if (!collectResult){System.out.println("Collect failed");}
-				else{
-				System.out.println("Collect Succeeded");
-				for(ContainerDeclaration cd : elements){
-					if (cd instanceof ClasseDeclaration){
-						ClasseDeclaration cld = (ClasseDeclaration) cd;
-						resolveResult = cld.resolve(tds) && resolveResult;
-					}else if (cd instanceof MainClass){
-						MainClass id = (MainClass) cd;
-						resolveResult = id.resolve(tds) && resolveResult;
-					} else {
-                      	InterfaceDeclaration id = (InterfaceDeclaration) cd;
-                        resolveResult = id.resolve(tds) && resolveResult;
-				     }
-
+			boolean resolveResult = true;
+			boolean collectResult= true;
+			for(ContainerDeclaration cd : elements){
+			//System.out.println(cd);
+            	if (cd instanceof ClasseDeclaration){
+                	ClasseDeclaration cld = (ClasseDeclaration) cd;
+                    collectResult =  cld.collect(tds) && collectResult;
+                } else if (cd instanceof MainClass){
+                	MainClass id = (MainClass) cd;
+					collectResult = id.collect(tds) && collectResult;
+                } else {
+                	InterfaceDeclaration id = (InterfaceDeclaration) cd;
+                	collectResult = id.collect(tds) && collectResult;
 				}
-				if(!resolveResult)
-				    System.out.println("Resolve failed");
-				else {
-
-				    System.out.println("Resolve succeeded");
+			}
+			if (!collectResult) {
+				System.out.println("Collect failed");
+			}
+			else{
+				System.out.println("Collect Succeeded");
+			}
+			
+			for(ContainerDeclaration cd : elements) {
+				System.out.println("Parser: resolvefor, " + cd);
+				if (cd instanceof ClasseDeclaration){
+					ClasseDeclaration cld = (ClasseDeclaration) cd;
+					resolveResult = cld.resolve(tds) && resolveResult;
+				} else if (cd instanceof MainClass){
+					MainClass id = (MainClass) cd;
+					resolveResult = id.resolve(tds) && resolveResult;
+				} else {
+                    InterfaceDeclaration id = (InterfaceDeclaration) cd;
+                    resolveResult = id.resolve(tds) && resolveResult;
+				}
+			}
+			if(!resolveResult) {
+				System.out.println("Resolve failed");
+			}
+			else {
+				System.out.println("Resolve succeeded");
+			}	
 					
-					
-				    boolean typeResult = true;
+			boolean typeResult = true;
+			for(ContainerDeclaration cd : elements){
+				if (cd instanceof ClasseDeclaration){
+					ClasseDeclaration cld = (ClasseDeclaration) cd;
+					typeResult =  cld.checkType() && typeResult;
+				} else if (cd instanceof MainClass){
+					MainClass m = (MainClass) cd;
+					typeResult =  m.checkType() && typeResult;
+				} else {
+					InterfaceDeclaration id = (InterfaceDeclaration) cd;
+					typeResult = id.checkType() && typeResult;
+				}
+			}
+			if(!typeResult) {
+				System.out.println("CheckType failed");
+			}
+			else {
+				System.out.println("CheckType Worked");
+			} 
+						
 
-				    for(ContainerDeclaration cd : elements){
-				        if (cd instanceof ClasseDeclaration){
-				            ClasseDeclaration cld = (ClasseDeclaration) cd;
-				            typeResult =  cld.checkType() && typeResult;
-				        }else if (cd instanceof MainClass){
-							MainClass m = (MainClass) cd;
-							typeResult =  m.checkType() && typeResult;
-						}else{
-							InterfaceDeclaration id = (InterfaceDeclaration) cd;
-							typeResult = id.checkType() && typeResult;
-				         }
-				    }
-				    if(!typeResult)
-				        System.out.println("CheckType failed");
-				    else{
-
-				        System.out.println("CheckType Worked");}
-						/*
+					/*
 				        int size = 0 ;
 
 				        for(ContainerDeclaration cd : elements){
@@ -254,8 +259,7 @@ Program ::=
 						    }
 
 					}
-*/}
-				}
+*/
 				
 			:}
 		;

@@ -125,6 +125,10 @@ public class ClasseDeclaration implements Type , ContainerDeclaration{
         for (Definition def: this.definitionList) {
         	result = result&&def.collect(_scope);
         }
+        for (Constructor constructor: this.constructorList) {
+        	System.out.println(constructor);
+        	result = result && constructor.collect(_scope);
+        }
         return result;
 
     }
@@ -166,6 +170,10 @@ public class ClasseDeclaration implements Type , ContainerDeclaration{
         }
         if (!this.getConstructorList().isEmpty()) {
         	exist = true;
+            for (Constructor constructor: this.constructorList) {
+            	System.out.println(constructor);
+            	result = result && constructor.resolve(_scope);
+            }
         }
         // si le constructeur n'existe pas , on crée un qui est vide
         if(!exist) {
