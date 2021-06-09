@@ -764,9 +764,10 @@ Affectable ::= UL_Identificateur:nom
 				RESULT =new ThisAssignement();
 				
 				:}
-			| UL_Super
+			/*| UL_Super
 				{:
 				:}
+			*/
 			/* fin ajout miniJava */
 			/* début retrait miniJava
 			| UL_Asterisque Affectable:pointeur
@@ -934,7 +935,7 @@ Expression ::= /* TODO (modifications à faire pour 2022) : Affectable:affectabl
 				{:
 				RESULT = new ThisAssignement( );
 				:}
-			| UL_Super
+			/*| UL_Super */
 				{:
 				//RESULT = new SuperClass();
 				:}
