@@ -68,6 +68,15 @@ public class Block {
 	 * allowed.
 	 */
 	public boolean collect(HierarchicalScope<Declaration> _scope) {
+		/*
+		boolean _result = true;
+		SymbolTable _table = new SymbolTable(_scope);
+		for(Instruction _instruction: this.instructions) {
+			_result = _result && _instruction.collect(_table);
+		}
+		return _result;
+		
+		*/
 		this.tds = new SymbolTable(_scope);
         for (Instruction _instruction : this.instructions) {
             if (!_instruction.collect(tds)) {
@@ -121,7 +130,15 @@ public class Block {
 	 * block have been previously defined.
 	 */
 	public boolean resolve(HierarchicalScope<Declaration> _scope) {
-		 for (Instruction _instruction : this.instructions) {
+		/*
+		boolean _result = true;
+		SymbolTable _table = new SymbolTable(_scope);
+		for(Instruction _instruction: this.instructions) {
+			_result = _result && _instruction.resolve(_table);
+		}
+		return _result && this.checkType();
+		*/ 
+		for (Instruction _instruction : this.instructions) {
 			 if (_instruction instanceof TypeDeclaration) {
 				 Type instructionType =((TypeDeclaration)_instruction).getType();
 				 if( instructionType instanceof  EnumerationType) {

@@ -1,5 +1,6 @@
 package fr.n7.stl.miniJava.declaration;
 
+import fr.n7.stl.block.ast.expression.Expression;
 import fr.n7.stl.block.ast.instruction.declaration.VariableDeclaration;
 import fr.n7.stl.block.ast.scope.Declaration;
 import fr.n7.stl.block.ast.scope.HierarchicalScope;
@@ -278,6 +279,12 @@ public class ClasseDeclaration implements Type , ContainerDeclaration{
     		}
     	}
         return null;
+	}
+	
+	public String toString() {
+		String _result = "class " + this.getName();
+		return _result;
+		
 	}
 
 }
