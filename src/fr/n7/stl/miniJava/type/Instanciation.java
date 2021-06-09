@@ -79,13 +79,6 @@ public class Instanciation implements Type, Expression {
     public Fragment getCode(TAMFactory _factory) {
 
         ClasseDeclaration cld = (ClasseDeclaration) this.declaration;
-//        int length;
-//        if(this.declaration.isClasse())
-//            length = 1;
-//        else
-//            length = 0;
-//        // attention aux interfaces recuperer methode LENGTH !!!!
-
         Fragment _result = _factory.createFragment();
         _result.add(_factory.createLoad(
                 cld.getRegister(),

@@ -31,14 +31,12 @@ public class ThisAssignement implements AssignableExpression{
 	}
 	@Override
 	public boolean resolve(HierarchicalScope<Declaration> _scope) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.declaration.resolve(_scope);
 	}
 
 	@Override
 	public Type getType() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.declaration.getType();
 	}
 
 	@Override
