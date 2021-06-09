@@ -1,12 +1,4 @@
-interface Interface {
-	
-	int methode(int i);
-	
-	int methode2();
-
-}
-
-class Constructor implements Interface {
+class Constructor {
 	//final int t1;
 	//static int t2;
 	//static final int t3;
@@ -27,17 +19,5 @@ class Constructor implements Interface {
 	
 	public int methode(int i) {
 		return i;
-	}
-}
-
-
-
-
-public class Main {
-	public static void main(String args[]) {
-		Constructor a = new Constructor();
-	
-		Constructor aa = new Constructor(1);
-	
 	}
 }

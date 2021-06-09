@@ -9,7 +9,8 @@ class Driver {
 			//parser = new Parser( "input.txt");
 			//parser = new Parser( "tests/test00.mjava");
 			//parser = new Parser( "tests/test01.mjava");
-			parser = new Parser( "tests/testMethode.mjava");
+			//parser = new Parser( "tests/testMethode.mjava");
+			parser = new Parser( "tests/testDeclaration.mjava");
 			//parser = new Parser( "tests/test_methode.mjava");
 			parser.parse();
 		} else {

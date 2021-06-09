@@ -260,11 +260,15 @@ Program ::=
 		;
 
 /* ajout miniJava : classes, interfaces, attributs, méthodes, constructeurs, etc */
-Elements ::= Main:main
+Elements ::= /* Lambda */
 		{:
-		List<ContainerDeclaration> _elements = new LinkedList<ContainerDeclaration>(); 
-				_elements.add(main); 
+		List<ContainerDeclaration> _elements = new LinkedList<ContainerDeclaration>();  
 				RESULT = _elements; 
+		:}
+		| Main:main Elements:elemts
+		{:
+				elemts.add(main); 
+				RESULT = elemts; 
 		:}
 		| Interface:itrf Elements:elemts
 		{:
@@ -302,7 +306,6 @@ Main ::= UL_Public UL_Classe UL_Classe_Principale
 		RESULT = new MainClass(parametres, bloc);
 		:}
 		;
-		
 		
 Implements ::= /* Lambda */
 		{:
