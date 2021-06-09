@@ -1,5 +1,9 @@
 package fr.n7.stl.block.ast.expression;
 
+import java.util.List;
+
+import fr.n7.stl.block.ast.expression.accessible.IdentifierAccess;
+import fr.n7.stl.block.ast.expression.assignable.VariableAssignment;
 import fr.n7.stl.block.ast.instruction.declaration.VariableDeclaration;
 import fr.n7.stl.block.ast.scope.Declaration;
 import fr.n7.stl.block.ast.scope.HierarchicalScope;
@@ -10,6 +14,10 @@ import fr.n7.stl.miniJava.declaration.ClasseDeclaration;
 import fr.n7.stl.miniJava.declaration.ContainerDeclaration;
 import fr.n7.stl.miniJava.definition.ThisAssignement;
 import fr.n7.stl.miniJava.type.Instanciation;
+import fr.n7.stl.miniJava.call.ConstructorCall;
+//import fr.n7.stl.miniJava.declaration.PooDeclaration;
+import fr.n7.stl.miniJava.definition.Attribut;
+import fr.n7.stl.miniJava.definition.Definition;
 import fr.n7.stl.util.Logger;
 
 /**
@@ -58,7 +66,7 @@ public abstract class AbstractField implements Expression {
 				Logger.error("No attribute called " + name);
 			}
 		}
-		return this.record .collect(_scope);
+		return this.record.collect(_scope);		
 	}
 
 	/* (non-Javadoc)
@@ -66,7 +74,7 @@ public abstract class AbstractField implements Expression {
 	 */
 	@Override
 	public boolean resolve(HierarchicalScope<Declaration> _scope) {
-
+		
 		if(this.record.getType() instanceof NamedType) {
 			Type temp = ((NamedType)this.record.getType()).getType();
 			if(temp instanceof RecordType) {
