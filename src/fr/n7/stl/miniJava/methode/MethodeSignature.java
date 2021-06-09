@@ -74,18 +74,6 @@ public class MethodeSignature implements Declaration {
     }
     
     public boolean equals(Object obj) {
-
-//        boolean flag = true;
-//        for(int i = 0 ;i < parameterDeclarations.size();i++ ){
-//            if(!parameterDeclarations.get(i).equals(((MethodeSignature)obj).getParameterDeclarations().get(i)))
-//            {
-//                flag = false;
-//                break;
-//            }
-//        }
-//        return  flag && this.type.equals(((MethodeSignature)obj).getType())
-//                && this.name.equals(((MethodeSignature)obj).getName());
-
          if(this == obj)
             return true;
         if (obj == null)

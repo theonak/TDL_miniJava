@@ -279,8 +279,7 @@ public class Definition implements Declaration {
         }
         //Sinon constructeur
 
-        return
-                this.constructor.allocateMemory(register,offset);
+        return this.constructor.allocateMemory(register,offset);
     }
     public boolean checkType() {
     	if(this.methode != null) 
