@@ -80,44 +80,45 @@ public class Block {
 		this.tds = new SymbolTable(_scope);
         for (Instruction _instruction : this.instructions) {
         	if (_instruction != null) {
-            if (!_instruction.collect(tds)) {
-            	Logger.error("here" + _instruction);
-                return false;
-            }
-            
-            if (_instruction instanceof ConstantDeclaration) {
-                if (this.tds.accepts((ConstantDeclaration) _instruction)) {
-                    tds.register((ConstantDeclaration) _instruction);
-                    //System.out.println(((ConstantDeclaration)_instruction).getName());
-                } else {
-                    Logger.error("The identifier " + ((ConstantDeclaration)_instruction).getName() + " is already used.");
-                    return false;
-                }
-            }
-            if (_instruction instanceof FunctionDeclaration) {
-                if (this.tds.accepts((FunctionDeclaration) _instruction)) {
-                    tds.register((FunctionDeclaration) _instruction);
-                } else {
-                    Logger.error("The identifier " + ((FunctionDeclaration)_instruction).getName() + " is already used.");
-                    return false;
-                }
-            }
-            if (_instruction instanceof VariableDeclaration) {
-            	//System.out.println(((VariableDeclaration)_instruction).getName());
-                if (this.tds.accepts((VariableDeclaration) _instruction)) {
-                    tds.register((VariableDeclaration) _instruction);
-                } else {
-                    Logger.error("The identifier " + ((VariableDeclaration)_instruction).getName() + " is already used.");
-                    return false;
-                }
-            }
-            if (_instruction instanceof TypeDeclaration) {
-                if (this.tds.accepts((TypeDeclaration) _instruction)) {
-                    tds.register((TypeDeclaration) _instruction);
-                } else {
-                    Logger.error("The identifier " + ((TypeDeclaration)_instruction).getName() + " is already used.");
-                    return false;
-                }}
+	            if (!_instruction.collect(tds)) {
+	            	Logger.error("here" + _instruction);
+	                return false;
+	            }
+	            
+	            if (_instruction instanceof ConstantDeclaration) {
+	                if (this.tds.accepts((ConstantDeclaration) _instruction)) {
+	                    tds.register((ConstantDeclaration) _instruction);
+	                    //System.out.println(((ConstantDeclaration)_instruction).getName());
+	                } else {
+	                    Logger.error("The identifier " + ((ConstantDeclaration)_instruction).getName() + " is already used.");
+	                    return false;
+	                }
+	            }
+	            if (_instruction instanceof FunctionDeclaration) {
+	                if (this.tds.accepts((FunctionDeclaration) _instruction)) {
+	                    tds.register((FunctionDeclaration) _instruction);
+	                } else {
+	                    Logger.error("The identifier " + ((FunctionDeclaration)_instruction).getName() + " is already used.");
+	                    return false;
+	                }
+	            }
+	            if (_instruction instanceof VariableDeclaration) {
+	            	//System.out.println(((VariableDeclaration)_instruction).getName());
+	                if (this.tds.accepts((VariableDeclaration) _instruction)) {
+	                    tds.register((VariableDeclaration) _instruction);
+	                } else {
+	                    Logger.error("The identifier " + ((VariableDeclaration)_instruction).getName() + " is already used.");
+	                    return false;
+	                }
+	            }
+	            if (_instruction instanceof TypeDeclaration) {
+	                if (this.tds.accepts((TypeDeclaration) _instruction)) {
+	                    tds.register((TypeDeclaration) _instruction);
+	                } else {
+	                    Logger.error("The identifier " + ((TypeDeclaration)_instruction).getName() + " is already used.");
+	                    return false;
+	                }
+	            }
             }
 		}
         return true;
@@ -171,10 +172,15 @@ public class Block {
 	 */	
 	public boolean checkType() {
 		for (Instruction _instruction : this.instructions) {
+			System.out.println("Block : checktype, " + _instruction.toString());
+			//System.out.println(" hello " + _instruction.checkType());
             if (!_instruction.checkType()) {
+            	System.out.println(" hello ");
                 Logger.error("Type Error in '' " + _instruction + " ''.");
                 return false;
             }
+            System.out.println(" hello ");
+           
 		}
         return true;
 	}

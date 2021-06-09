@@ -129,7 +129,8 @@ public class IdentifierAccess extends AbstractIdentifier implements AccessibleEx
 		}else {
 			if (this.declaration instanceof ClasseDeclaration)
 				System.out.println("yes");
-			throw new SemanticsUndefinedException( "Collect and Resolve have probably not been implemented correctly. The identifier " + this.name + " has not been resolved.");
+			return null;
+			//throw new SemanticsUndefinedException( "Collect and Resolve have probably not been implemented correctly. The identifier " + this.name + " has not been resolved.");
 		}
 	}
 

@@ -188,7 +188,8 @@ Program ::=
 				else {
 
 				    System.out.println("Resolve succeeded");
-					/*
+					
+					
 				    boolean typeResult = true;
 
 				    for(ContainerDeclaration cd : elements){
@@ -208,7 +209,7 @@ Program ::=
 				    else{
 
 				        System.out.println("CheckType Worked");}
-						
+						/*
 				        int size = 0 ;
 
 				        for(ContainerDeclaration cd : elements){
@@ -420,6 +421,11 @@ Attribute ::=
 		Type:type Identifiant:identifiant UL_Point_Virgule
 		{:
 		RESULT  = new Attribut(type,identifiant.getLeft());
+		:}
+		|
+		Type:type Identifiant:identifiant UL_Egal Expression:valeur UL_Point_Virgule
+		{:
+		RESULT  = new Attribut(type,identifiant.getLeft(),valeur,false, false);
 		:}
 		|
 		UL_De_Classe Type:type Identifiant:identifiant UL_Egal Expression:valeur UL_Point_Virgule

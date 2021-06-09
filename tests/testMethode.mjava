@@ -7,9 +7,8 @@ interface Interface {
 }
 
 class Constructor implements Interface {
-	//final int t1;
-	//static int t2;
-	//static final int t3;
+	public static int t1 = 4;
+	public static final int t2 = 5;
 	
 	public int v;
 	
@@ -34,7 +33,7 @@ class Constructor implements Interface {
 
 
 public class Main {
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		Constructor a = new Constructor();
 	
 		Constructor aa = new Constructor(1);

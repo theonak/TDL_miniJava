@@ -1,0 +1,5 @@
+class mauvaisTypes {
+	public int a = "true";
+	public static char charactere = 2;
+	public static final boolean isBool = 1;
+}

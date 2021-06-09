@@ -72,14 +72,14 @@ public class Assignment implements Instruction, Expression {
 	 */
 	@Override
 	public boolean checkType() {
-		
-		 boolean result = this.assignable.getType().compatibleWith(this.value.getType());
-		 if (result){
-			 return true;
-		 }else {
-			 System.out.println(this.assignable.getType() + " not compatible with " + this.value.getType());
-			 return false;
-		 }
+		System.out.println("Assignement: checktype, " + this.assignable.getType() + " " + this.value.toString() );
+		boolean result = this.assignable.getType().compatibleWith(this.value.getType());
+		if (result){
+			return true;
+		}else {
+			System.out.println(this.assignable.getType() + " not compatible with " + this.value.getType());
+			return false;
+		}
 	}
 	
 	/* (non-Javadoc)

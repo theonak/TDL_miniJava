@@ -2,22 +2,22 @@ class A {
 
    public int i;
 
-   public construct A(int j) {
+   public A(int j) {
 
        this.i = j;
    }
 
    public void incr(int x, int y) {
-            this.i = x ;
-            this.i = y;
-           this.i = this.i+1;
-       }
+        this.i = x ;
+        this.i = y;
+       	this.i = this.i+1;
+   }
 
 }
 
- class Main {
+ public class Main {
 
-   public static void main(String[] args) {
+   public static void main(String args[]) {
 
       A a = new A(3);
 

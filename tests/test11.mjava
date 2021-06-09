@@ -3,7 +3,7 @@ class A {
 
    public int i;
 
-   public construct A (int j) {
+   public A (int j) {
        this.i = j;
    }
 
