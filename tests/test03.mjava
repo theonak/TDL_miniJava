@@ -2,11 +2,23 @@
 interface A {
      void a();
 }
-// test structure de methode sans return
- class Classe2 {
+
+class B implements A {
      public int i ;
 
-     public void m1 ( int i) {
+     public void a() {
          print i;
      }
- }
+     
+     public B (int j) {
+     	 this.i = j;
+     }
+}
+
+public class Main {
+
+     public static void main(String args[]){
+        B c = new B(1);
+        c.a();
+     }
+}
