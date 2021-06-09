@@ -74,11 +74,12 @@ public class Block {
 		for(Instruction _instruction: this.instructions) {
 			_result = _result && _instruction.collect(_table);
 		}
-		return _result;
+		return _result;*/
 		
-		*/
+		
 		this.tds = new SymbolTable(_scope);
         for (Instruction _instruction : this.instructions) {
+        	if (_instruction != null) {
             if (!_instruction.collect(tds)) {
             	Logger.error("here" + _instruction);
                 return false;
@@ -116,7 +117,7 @@ public class Block {
                 } else {
                     Logger.error("The identifier " + ((TypeDeclaration)_instruction).getName() + " is already used.");
                     return false;
-                }
+                }}
             }
 		}
         return true;
@@ -136,8 +137,8 @@ public class Block {
 		for(Instruction _instruction: this.instructions) {
 			_result = _result && _instruction.resolve(_table);
 		}
-		return _result && this.checkType();
-		*/ 
+		return _result && this.checkType();*/
+		
 		for (Instruction _instruction : this.instructions) {
 			 if (_instruction instanceof TypeDeclaration) {
 				 Type instructionType =((TypeDeclaration)_instruction).getType();
@@ -155,10 +156,11 @@ public class Block {
 				}
 			}
 			 
+			if (_instruction != null) {
             if (!_instruction.resolve(tds)) {
                 Logger.error("Couldn't resolve " + _instruction + " at Block.");
                 return false;
-            }
+            }}
 		}
         return true;
 	}

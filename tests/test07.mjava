@@ -1,19 +1,22 @@
-//test mot cle private, constructeur, plusieurs attribut
- class Classe1 {
-     private int a1 ;
-     private int a2 ;
+//test mot cle private, plusieurs attribut
+class A {
+    private int a1 ;
+    private int a2 ;
 
-    public construct Classe1 (int i, int j) {
+	public A(int i, int j) {
         this.a1 = i;
         this.a2 = j;
+	}
+    public int m1(int i) {
+        int j = i + 1;
+        return j;
+    }
 }
-     public  int m1 ( int i) {
-         int j = i + 1;
-         return j;
-     }
 
-     public static void main(String[] args){
-        Classe1 c = new Classe1(1,2);
+public class Main {
+
+     public static void main(String args[]){
+        A c = new A(1,2);
         int y = c.a1;
         int x = c.m1(4);
         int z = c.a2;
@@ -24,4 +27,4 @@
 
         print z;
      }
-}
+ }
