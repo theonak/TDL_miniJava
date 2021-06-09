@@ -41,9 +41,10 @@ public class Constructor implements Declaration, Instruction {
     	this.label = nom;
     	this.parameterDeclarationList = parameterDeclarations;
         this.bloc = bloc;
+        this.instanciation = new Instanciation(nom);
     }
     public String toString() {
-    	return "construct " + this.instanciation.getName() + "(" + this.parameterDeclarationList + ") { " + "/n" + this.bloc + "}";
+    	return "construct " + this.getName() + "(" + this.parameterDeclarationList + ") { " + "/n" + this.bloc + "}";
     }
 
     public Instanciation getInstanciation() {
@@ -112,7 +113,7 @@ public class Constructor implements Declaration, Instruction {
 
     @Override
     public String getName(){
-        return this.instanciation.getName();
+        return this.label;
     }
 
     @Override
@@ -127,28 +128,35 @@ public class Constructor implements Declaration, Instruction {
     public boolean collect(HierarchicalScope<Declaration> _scope) {
         boolean _result = true;
     	for (ParameterDeclaration param: this.parameterDeclarationList) {
-        	//_result = _result && param.collect(_scope);
+        	_scope.register(param);
+    		//_result = _result && param.collect(_scope);
         }
     	return this.bloc.collect(_scope);
     }
 
     @Override
     public boolean resolve(HierarchicalScope<Declaration> _scope) {
-    	System.out.println("Constructor: resolve, " + this.getName() + " known ?" + _scope.knows(this.getName()));
+    	//System.out.println("Constructor: resolve, " + this.getName() + " known ?" + _scope.knows(this.getName()));
     	if(_scope.knows(this.getName())){
             ContainerDeclaration pod = (ContainerDeclaration)_scope.get(this.getName());
             this.instanciation.setDeclaration(pod);
-            System.out.println("Constructor: resolve, " + this.getName() + " =? " + this.instanciation.getDeclaration().getName());
+            
+            //System.out.println("Constructor: resolve, " + this.getName() + " =? " + this.instanciation.getDeclaration().getName());
             if(this.getName().equals(this.instanciation.getDeclaration().getName())) {
                 boolean result = true;
+                
                 HierarchicalScope<Declaration> scope = new SymbolTable(_scope);
-                System.out.println("Constructor: resolve, parameterDeclarationList null ? " + this.parameterDeclarationList);
-                if (this.parameterDeclarationList != null)
+                //System.out.println("Constructor: resolve, parameterDeclarationList null ? " + this.parameterDeclarationList);
+                if (this.parameterDeclarationList != null) {
                     for (ParameterDeclaration param : this.parameterDeclarationList) {
                     	//System.out.println("from Constructor : " +param.getName());
-                        result = param.resolve(scope) && result;
-
+                        
+                    	result = result && param.resolve(scope);
                     }
+                }
+                //System.out.println("Constructor: resolve, bloc ?" + this.bloc.toString());
+                //System.out.println("Constructor: resolve, bloc ?" + _scope);
+                
                 boolean b = true;
                 if (this.bloc != null) {
                     b = this.bloc.resolve(_scope);
@@ -156,7 +164,7 @@ public class Constructor implements Declaration, Instruction {
                     return this.bloc.resolve(scope) && result && b;
                 }else
                 {return true;}
-
+				
             }else {
                 Logger.error("Constructor must have same name as the class");
             }

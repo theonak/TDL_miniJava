@@ -1,13 +1,15 @@
-abstract class A{
-    public final int i=5;
+class A{
+    public static final int i=5;
 
-    public int methode1();
+    public int methode1(){
+    	return 1;
+    }
 
 
 }
 
-class Main {
-    public static void main(){
+public class Main {
+    public static void main(String args[]){
         A a = new A();
         a.i = 7;
         print(a.i);

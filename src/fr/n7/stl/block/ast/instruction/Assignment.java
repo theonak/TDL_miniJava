@@ -73,7 +73,7 @@ public class Assignment implements Instruction, Expression {
 	 */
 	@Override
 	public boolean checkType() {
-		System.out.println("Assignement: checktype, " + this.assignable.getType() + " " + this.getType() );
+		//System.out.println("Assignement: checktype, " + this.assignable.getType() + " " + this.getType() );
 		boolean result = this.assignable.getType().compatibleWith(this.getType());
 		if (result){
 			return true;

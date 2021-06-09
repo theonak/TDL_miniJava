@@ -5,7 +5,7 @@ class A {
 	public int z = 8;
     
     public A() {
-		int x = A.fonct(5);
+		//int x = A.fonct(5);
 	}
 
 	public static int fonct(int e) {

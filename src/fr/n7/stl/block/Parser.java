@@ -702,7 +702,7 @@ class CUP$Parser$actions {
 			boolean resolveResult = true;
 			boolean collectResult= true;
 			for(ContainerDeclaration cd : elements){
-			//System.out.println(cd);
+				//System.out.println(cd);
             	if (cd instanceof ClasseDeclaration){
                 	ClasseDeclaration cld = (ClasseDeclaration) cd;
                     collectResult =  cld.collect(tds) && collectResult;
@@ -722,7 +722,7 @@ class CUP$Parser$actions {
 			}
 			
 			for(ContainerDeclaration cd : elements) {
-				System.out.println("Parser: resolvefor, " + cd);
+				//System.out.println("Parser: resolvefor, " + cd);
 				if (cd instanceof ClasseDeclaration){
 					ClasseDeclaration cld = (ClasseDeclaration) cd;
 					resolveResult = cld.resolve(tds) && resolveResult;

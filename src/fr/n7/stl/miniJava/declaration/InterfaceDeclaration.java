@@ -44,7 +44,9 @@ public class InterfaceDeclaration implements ContainerDeclaration {
     }
 
     public boolean checkType(){
-    	throw new SemanticsUndefinedException("checktype in InterfaceDeclaration");
+    	// Une interface n'a pas de type ?
+    	return true;
+    	//throw new SemanticsUndefinedException("checktype in InterfaceDeclaration");
     }
 
     public Type getType(){

@@ -19,19 +19,20 @@ public class ThisAssignement implements AssignableExpression{
 
 	@Override
 	public boolean collect(HierarchicalScope<Declaration> _scope) {
-		/* This is the backward resolve part. */
+		/* This is the backward resolve part. 
 		//System.out.println("ThisAssignement : collect, ");
-		/*if (((HierarchicalScope<Declaration>)_scope).knows(this.name)) {
+		if (((HierarchicalScope<Declaration>)_scope).knows(this.name)) {
 			this.declaration = _scope.get(this.name);
 			//System.out.println(this.declaration.getType());
 			
-			/* These kinds are handled by partial resolve. */
-			/*if (declaration instanceof VariableDeclaration) {
+			/* These kinds are handled by partial resolve. 
+			if (declaration instanceof VariableDeclaration) {
 				
 				this.expression = new VariableAccess((VariableDeclaration) declaration);
 			}
 		}*/
-		return true;
+		boolean _result = this.declaration.collect(_scope);
+		return _result;
 	}
 	
 	public void setClassDeclaration(ClasseDeclaration c) {
@@ -44,12 +45,12 @@ public class ThisAssignement implements AssignableExpression{
 	}
 	@Override
 	public boolean resolve(HierarchicalScope<Declaration> _scope) {
-		return this.declaration.resolve(_scope);
+		return true;
 	}
 
 	@Override
 	public Type getType() {
-		System.out.println("ThisAssignement: getType, " + this.declaration.getType());
+		//System.out.println("ThisAssignement: getType, " + this.declaration.getType());
 		return this.declaration.getType();
 	}
 

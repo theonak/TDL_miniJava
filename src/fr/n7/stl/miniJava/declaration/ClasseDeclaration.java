@@ -126,7 +126,7 @@ public class ClasseDeclaration implements Type , ContainerDeclaration{
         	result = result&&def.collect(_scope);
         }
         for (Constructor constructor: this.constructorList) {
-        	System.out.println(constructor);
+        	//System.out.println(constructor);
         	result = result && constructor.collect(_scope);
         }
         return result;
@@ -171,7 +171,7 @@ public class ClasseDeclaration implements Type , ContainerDeclaration{
         if (!this.getConstructorList().isEmpty()) {
         	exist = true;
             for (Constructor constructor: this.constructorList) {
-            	System.out.println(constructor);
+            	//System.out.println(constructor);
             	result = result && constructor.resolve(_scope);
             }
         }
