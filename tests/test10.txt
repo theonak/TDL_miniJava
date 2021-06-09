@@ -1,27 +1,30 @@
-//test mot cle private, constructeur, plusieurs attribut
- class Classe1 {
-     private int a1 ;
-     private int a2 ;
+class A {
 
-    public construct Classe1 (int i, int j) {
-        this.a1 = i;
-        this.a2 = j;
+   public int i;
+
+   public construct A (int j) {
+       this.i = j;
+   }
+
+   public void incr() {
+           this.i = this.i+1;
+       }
+
 }
-     public  int m1 ( int i) {
-         int j = i + 1;
-         return j;
-     }
 
-     public static void main(String[] args){
-        Classe1 c = new Classe1(1,2);
-        int y = c.a1;
-        int x = c.m1(4);
-        int z = c.a2;
+ class Main {
 
-        print y;
+   public static void main(String[] args) {
 
-        print x;
+      A a = new A(2);
 
-        print z;
-     }
+      print( a.i );
+
+      a.i = a.i + 1;
+
+      print( a.i );
+
+
+   }
+
 }

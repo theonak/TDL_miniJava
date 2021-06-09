@@ -1,14 +1,15 @@
-//2 classes + construct + methodes + appel dans Main
-
 class A {
 
    public int i;
 
-   public construct A (int j) {
-       this.i = j;
-       }
+   public construct A(int j) {
 
-       public void incr() {
+       this.i = j;
+   }
+
+   public void incr(int x, int y) {
+            this.i = x ;
+            this.i = y;
            this.i = this.i+1;
        }
 
@@ -18,7 +19,7 @@ class A {
 
    public static void main(String[] args) {
 
-      A a = new A( 2 );
+      A a = new A(3);
 
       print( a.i );
 
@@ -26,10 +27,11 @@ class A {
 
       print( a.i );
 
-      a.incr();
+      a.i = a.i + 1;
 
-      print( a.i );
+            print( a.i );
+
 
    }
 
-   }
+}

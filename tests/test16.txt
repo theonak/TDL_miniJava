@@ -1,8 +1,0 @@
-//Surcharge, et utilisation de la premiere methode
-class Classe19 {
-    public void a(){}
-    public void a(int b){}
-    public void test() {
-        this.a();
-    }
-}
