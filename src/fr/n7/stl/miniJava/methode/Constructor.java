@@ -117,7 +117,10 @@ public class Constructor implements Declaration, Instruction {
 
     @Override
     public Type getType(){
-        throw new SemanticsUndefinedException("Semantics getCode is not implemented in PointerAccess.");
+        //
+    	// Un Constructeur n'a pas de type
+    	//
+    	return null;
     }
 
     @Override
