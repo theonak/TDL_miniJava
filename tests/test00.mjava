@@ -1,5 +1,7 @@
 class A {
 	public int v;
+	public int w = 1;
+	private int pastoucher = 0;
 	
 	public void setV(int _v) {
 		this.v = _v;
@@ -22,8 +24,9 @@ class A {
 public class Main {
 
 	public static void main(String args[]) {
-
-		
+		A a = new A(1);
+		a.v;
+		a.pastoucher;
 	}
 }
 		

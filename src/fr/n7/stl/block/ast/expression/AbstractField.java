@@ -55,7 +55,8 @@ public abstract class AbstractField implements Expression {
 	 */
 	@Override
 	public boolean collect(HierarchicalScope<Declaration> _scope) {
-		if (record instanceof ThisAssignement) {
+		//System.out.println("Abstractfield: collect " + _scope);
+		if (this.record instanceof ThisAssignement) {
 			VariableDeclaration d = (VariableDeclaration) _scope.get("currentclass");
 			ClasseDeclaration _class = (ClasseDeclaration)d.getType();
 			((ThisAssignement)record).setClassDeclaration(_class);

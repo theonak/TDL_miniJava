@@ -8,7 +8,7 @@ class Driver {
 		if (args.length == 0) {
 			//parser = new Parser( "input.txt");
 			//parser = new Parser( "tests/test00.mjava");
-			//->parser = new Parser( "tests/test01.mjava");
+			//parser = new Parser( "tests/test01.mjava");
 			//->parser = new Parser( "tests/test02.mjava");
 			//parser = new Parser( "tests/test03.mjava");
 			//->parser = new Parser( "tests/test04.mjava");
@@ -20,13 +20,13 @@ class Driver {
 			//->parser = new Parser( "tests/test10.mjava");
 			//parser = new Parser( "tests/test11.mjava");
 			//->parser = new Parser( "tests/test12.mjava");
-			//parser = new Parser( "tests/test13.mjava");
+			parser = new Parser( "tests/test13.mjava");
 			
 			
 			//parser = new Parser( "tests/testMethode.mjava");
 			//parser = new Parser( "tests/testDeclaration.mjava");
 			//parser = new Parser( "tests/test_methode.mjava");
-			//normal erreur : parser = new Parser( "tests/testType.mjava");
+			//parser = new Parser( "tests/testType.mjava");
 			parser.parse();
 		} else {
 			for (String name : args) {

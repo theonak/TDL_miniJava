@@ -37,8 +37,8 @@ public class Main {
 		i.m();
 		
 		I tab[] = new I [2];
-		tab[0] = new A1();
-		tab[1] = new A2();
+		tab[0] = new CI1();
+		tab[1] = new CI2();
 		tab[0].m();
 		tab[1].m();
 		
