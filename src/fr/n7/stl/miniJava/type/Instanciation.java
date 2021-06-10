@@ -6,6 +6,7 @@ import fr.n7.stl.block.ast.scope.HierarchicalScope;
 import fr.n7.stl.block.ast.type.Type;
 import fr.n7.stl.miniJava.declaration.ClasseDeclaration;
 import fr.n7.stl.miniJava.declaration.ContainerDeclaration;
+import fr.n7.stl.miniJava.declaration.InterfaceDeclaration;
 import fr.n7.stl.miniJava.definition.Attribut;
 import fr.n7.stl.tam.ast.Fragment;
 import fr.n7.stl.tam.ast.TAMFactory;
@@ -31,7 +32,6 @@ public class Instanciation implements Type, Expression {
         this.name = name;
     }
 
-    
     public String getName() {
         return name;
     }
@@ -97,20 +97,39 @@ public class Instanciation implements Type, Expression {
     public boolean compatibleWith(Type _other) {
 		if(_other instanceof Instanciation){
 			Instanciation other = (Instanciation) _other;
-			if(this.declaration.getName().equals(other.declaration.getName())){
+			
+			//System.out.println("Instantiation: compatibleWith, " + other.getName() + " " + ((ClasseDeclaration)other.getDeclaration()).getImplementations() );
+			
+			if(this.getName().equals(other.getName())){
 				return true;
 			}
+			
+			//System.out.println("Instantiation : compatibleWith, " + this.declaration.getName() + " <->? " + other.getType() + " " + (other.getType() instanceof PooType));
 			if (this.declaration instanceof ClasseDeclaration){
-			for(Instanciation i : ((ClasseDeclaration) this.declaration).getImplementations()){
-					if(this.declaration.getName().contentEquals(i.getName()))
-						return true;
+				for(Instanciation i : ((ClasseDeclaration) this.declaration).getImplementations()){
+						if(this.declaration.getName().contentEquals(i.getName()))
+							return true;
+				}
 			}
+			else if (this.declaration instanceof InterfaceDeclaration){
+				for(Instanciation i : ((ClasseDeclaration)other.getDeclaration()).getImplementations()){
+					//System.out.println("Instanciation : compatibleWith, Type(declaration)=InterfaceDeclaration, " + this.getName() +" "+ i.getName() );
+					if(this.getName().contentEquals(i.getName())) {
+						return true;
+					}
+				}
 			}
 
+				
+				
+				//for (InterfaceType implInterfaces : ((PooType)_other)) {
+				
+
+				
+				//System.out.println("Hello " + ((InterfaceDeclaration) this.declaration).getType().compatibleWith(((ClassType)_other).getType()));
+
 			
-			
-			
-		}else if(_other instanceof PooType) {
+		} else if(_other instanceof PooType) {
 			return this.getType().compatibleWith(_other);
 		}
 		

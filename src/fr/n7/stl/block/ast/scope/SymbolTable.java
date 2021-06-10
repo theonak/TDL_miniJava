@@ -69,12 +69,16 @@ public class SymbolTable implements HierarchicalScope<Declaration> {
 			this.declarations.put(_declaration.getName(), _declaration);
 		} else {
 			if (_declaration.getName() == "currentclass") {
-				this.declarations.remove("currentclass");
-				this.register(_declaration);
+				//this.declarations.remove("currentclass");
+				//this.register(_declaration);
 			}
 			//System.out.println("SymbolTable: register fail, " + _declaration.toString() + " ; " + _declaration.getName());
 			throw new IllegalArgumentException();
 		}
+	}
+	
+	public void delete(String name) {
+		this.declarations.remove(name);
 	}
 	
 	/* (non-Javadoc)

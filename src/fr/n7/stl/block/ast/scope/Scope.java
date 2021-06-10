@@ -38,6 +38,12 @@ public interface Scope <D extends Declaration> {
 	 * @param _declaration : _declaration to be registered in the scope.
 	 */
 	public void register(D _declaration);
+	
+	/**
+	 * Delete a declaration from the scope.
+	 * @param name : name (key) of the object in the scope.
+	 */
+	public void delete(String name);
 
 	
 }

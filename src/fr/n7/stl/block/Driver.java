@@ -8,19 +8,19 @@ class Driver {
 		if (args.length == 0) {
 			//parser = new Parser( "input.txt");
 			//parser = new Parser( "tests/test00.mjava");
-			//parser = new Parser( "tests/test01.mjava");
-			//->parser = new Parser( "tests/test02.mjava");
+			parser = new Parser( "tests/test01.mjava");
+			//field->parser = new Parser( "tests/test02.mjava");
 			//parser = new Parser( "tests/test03.mjava");
 			//->parser = new Parser( "tests/test04.mjava");
 			//parser = new Parser( "tests/test05.mjava");
-			//->parser = new Parser( "tests/test06.mjava");
-			//->parser = new Parser( "tests/test07.mjava");
-			//->parser = new Parser( "tests/test08.mjava");
+			//parser = new Parser( "tests/test06.mjava");
+			//field->parser = new Parser( "tests/test07.mjava");
+			//field->parser = new Parser( "tests/test08.mjava");
 			//parser = new Parser( "tests/test09.mjava");
-			//->parser = new Parser( "tests/test10.mjava");
+			//field->parser = new Parser( "tests/test10.mjava");
 			//parser = new Parser( "tests/test11.mjava");
-			//->parser = new Parser( "tests/test12.mjava");
-			parser = new Parser( "tests/test13.mjava");
+			//field->parser = new Parser( "tests/test12.mjava");
+			//parser = new Parser( "tests/test13.mjava");
 			
 			
 			//parser = new Parser( "tests/testMethode.mjava");

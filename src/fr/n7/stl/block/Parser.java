@@ -56,8 +56,8 @@ public class Parser extends java_cup.runtime.lr_parser {
     "\000\153\000\002\002\003\000\002\002\004\000\002\022" +
     "\002\000\002\022\004\000\002\022\004\000\002\022\004" +
     "\000\002\025\007\000\002\024\010\000\002\023\017\000" +
-    "\002\035\002\000\002\035\004\000\002\034\005\000\002" +
-    "\034\003\000\002\040\003\000\002\036\002\000\002\036" +
+    "\002\035\002\000\002\035\004\000\002\034\003\000\002" +
+    "\034\005\000\002\040\003\000\002\036\002\000\002\036" +
     "\005\000\002\037\002\000\002\037\004\000\002\050\003" +
     "\000\002\050\003\000\002\050\003\000\002\051\003\000" +
     "\002\051\002\000\002\041\003\000\002\041\003\000\002" +
@@ -102,9 +102,9 @@ public class Parser extends java_cup.runtime.lr_parser {
     "\007\001\002\000\004\104\014\001\002\000\004\002\001" +
     "\001\002\000\006\007\016\052\ufff8\001\002\000\004\052" +
     "\024\001\002\000\004\104\020\001\002\000\006\023\022" +
-    "\052\ufff5\001\002\000\014\023\ufff4\046\ufff4\052\ufff4\054" +
+    "\052\ufff6\001\002\000\014\023\ufff4\046\ufff4\052\ufff4\054" +
     "\ufff4\104\ufff4\001\002\000\004\052\ufff7\001\002\000\004" +
-    "\104\020\001\002\000\004\052\ufff6\001\002\000\012\010" +
+    "\104\020\001\002\000\004\052\ufff5\001\002\000\012\010" +
     "\025\011\027\012\026\053\ufff3\001\002\000\024\013\uffef" +
     "\015\uffef\076\uffef\077\uffef\100\uffef\101\uffef\102\uffef\103" +
     "\uffef\104\uffef\001\002\000\024\013\uffee\015\uffee\076\uffee" +
@@ -931,6 +931,11 @@ class CUP$Parser$actions {
 		List<Definition> elements = (List<Definition>)((java_cup.runtime.Symbol) CUP$Parser$stack.elementAt(CUP$Parser$top-1)).value;
 		//@@CUPDBG9
 
+		// for (Instanciation interf: interfaces){
+		// 	System.out.println(" PARSER : Class, " + nom + " implements " + interf.getName());
+		// }
+
+		// System.out.println("PARSER: Class, Implements : " + interfaces);
 		RESULT = new ClasseDeclaration(nom, interfaces, elements);
 		//System.out.println("ClasseDeclaration"); 
 		//System.out.println(RESULT.toString());
@@ -984,7 +989,24 @@ class CUP$Parser$actions {
           return CUP$Parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 11: // Instances ::= Instance UL_Virgule Instances 
+          case 11: // Instances ::= Instance 
+            {
+              List<Instanciation> RESULT =null;
+		Location instxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
+		Location instxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
+		Instanciation inst = (Instanciation)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
+		//@@CUPDBG13
+
+		List<Instanciation> _elements = new LinkedList<Instanciation>(); 
+		_elements.add(inst); 
+		RESULT = _elements; 
+		
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("Instances",26, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+            }
+          return CUP$Parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 12: // Instances ::= Instance UL_Virgule Instances 
             {
               List<Instanciation> RESULT =null;
 		Location instxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)).xleft;
@@ -993,30 +1015,12 @@ class CUP$Parser$actions {
 		Location instancesxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
 		Location instancesxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
 		List<Instanciation> instances = (List<Instanciation>)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
-		//@@CUPDBG13
-
-		List<Instanciation> _elements = new LinkedList<Instanciation>(instances); 
-		_elements.add(inst); 
-		RESULT = _elements; 
-		
-              CUP$Parser$result = parser.getSymbolFactory().newSymbol("Instances",26, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
-            }
-          return CUP$Parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 12: // Instances ::= Instance 
-            {
-              List<Instanciation> RESULT =null;
-		Location instxleft = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xleft;
-		Location instxright = ((java_cup.runtime.ComplexSymbolFactory.ComplexSymbol)CUP$Parser$stack.peek()).xright;
-		Instanciation inst = (Instanciation)((java_cup.runtime.Symbol) CUP$Parser$stack.peek()).value;
 		//@@CUPDBG14
 
-		List<Instanciation> _elements = new LinkedList<Instanciation>(); 
-		_elements.add(inst); 
-				RESULT = _elements; 
+		instances.add(inst); 
+		RESULT = instances; 
 		
-              CUP$Parser$result = parser.getSymbolFactory().newSymbol("Instances",26, ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
+              CUP$Parser$result = parser.getSymbolFactory().newSymbol("Instances",26, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-2)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
           return CUP$Parser$result;
 

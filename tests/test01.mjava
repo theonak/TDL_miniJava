@@ -42,7 +42,7 @@ public class Main {
 		tab[0].m();
 		tab[1].m();
 		
-		i = new CI3( new CI1(), i);
+		//i = new CI3( new CI1(), i);
 		i.m();
 	}
 }

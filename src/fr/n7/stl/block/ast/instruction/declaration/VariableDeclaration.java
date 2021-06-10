@@ -120,7 +120,8 @@ public class VariableDeclaration implements Declaration, Instruction {
 	 */
 	@Override
 	public boolean checkType() {
-		//System.out.println(this.value.getType()==null);
+		//System.out.println(this.getType());
+		//System.out.println(this.value.getType());
 		boolean result = (this.value==null) || (this.getType().compatibleWith(this.value.getType()));
 		 if (result){
 			 return true;

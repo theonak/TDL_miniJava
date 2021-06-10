@@ -132,7 +132,7 @@ public class IdentifierAccess extends AbstractIdentifier implements AccessibleEx
 		} else if (this.type != null){
 			return this.type;
 		}else {
-			System.out.println("Identifieraccess: getType, " + this.declaration);
+			//System.out.println("Identifieraccess: getType, " + this.declaration);
 			if (this.declaration instanceof ClasseDeclaration)
 				System.out.println("yes");
 			return null;

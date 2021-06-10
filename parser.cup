@@ -297,6 +297,11 @@ Interface ::= UL_Interface UL_Identificateur:nom
 Class ::= UL_Classe UL_Identificateur:nom Implements:interfaces
 		UL_Accolade_Ouvrante ClassElements:elements UL_Accolade_Fermante
 		{:
+		// for (Instanciation interf: interfaces){
+		// 	System.out.println(" PARSER : Class, " + nom + " implements " + interf.getName());
+		// }
+
+		// System.out.println("PARSER: Class, Implements : " + interfaces);
 		RESULT = new ClasseDeclaration(nom, interfaces, elements);
 		//System.out.println("ClasseDeclaration"); 
 		//System.out.println(RESULT.toString());
@@ -322,20 +327,19 @@ Implements ::= /* Lambda */
 		:}
 		;
 		
-Instances ::= Instance:inst UL_Virgule Instances:instances
-		{:
-		List<Instanciation> _elements = new LinkedList<Instanciation>(instances); 
-		_elements.add(inst); 
-		RESULT = _elements; 
-		:}
-		|
-		Instance:inst
+Instances ::= Instance:inst
 		{:
 		List<Instanciation> _elements = new LinkedList<Instanciation>(); 
 		_elements.add(inst); 
-				RESULT = _elements; 
+		RESULT = _elements; 
+		:}
+		| Instance:inst UL_Virgule Instances:instances
+		{:
+		instances.add(inst); 
+		RESULT = instances; 
 		:}
 		;
+
 		
 Instance ::= UL_Identificateur:nom
 		{:
