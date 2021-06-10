@@ -1,5 +1,3 @@
-//2 classes + construct + methodes + appel dans Main
-
 class A {
 
    public int i;

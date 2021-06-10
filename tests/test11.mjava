@@ -1,4 +1,3 @@
-//tester une classe avec constructor + methode + attr
 class A {
 
    public int i;
