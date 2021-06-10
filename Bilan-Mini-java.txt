@@ -1,0 +1,52 @@
+1. Arbre abstrait : classes implémentées :
+
+Les nouvelles classes implémentées pour le langage miniJava sont :
+-call :
+	-AttributAccess.java
+	-AttributAssignement.java
+	-ConstructorCall.java
+	-MethodCall.java
+-declaration :
+	-ClasseDeclaration.java
+	-ContainerDeclaration.java
+	-GenericTypeDeclaration.java
+	-InterfaceDeclaration.java
+	-MainClass.java
+-definition :
+	-Attribut.java
+	-Definition.java
+	-ThisAssignement.java
+-methode :
+	-Constructor.java
+	-Methode.java
+	-MethodeSignature.java
+-type :
+	-Instanciation.java
+	-MiniJavaType.java
+
+2. Arbre abstrait : parties du langage traitées dans l’analyseur syntaxique (conduisant à la construction de l’arbre abstrait :
+
+-interfaces
+-implémentations d’interface
+-classes
+-classes principales
+-instanciations de classe
+-attributs
+-type d’attributs (private, public, final)
+-constructeurs de classe
+-méthodes de classe
+
+3. Gestion de la table des symboles (voir les exemples d’affichage à la fin de chaque bloc et à la racine du programme)
+
+4.Typage et vérification : vérifications implantées (interdits et erreur détectées) :
+
+-vérification de typage (variable, instanciation de classe)
+-erreur détectées pour un mauvais nombre de paramètres lors d’appel de méthodes ou de constructeurs
+
+5. Calcul du déplacement : Non traité.
+
+6. Génération de code :
+
+La génération de code n’a pas pu aboutir, mais des exemples de fichiers illustrant le résultat
+théorique de génération de code ont été créés.
+(Dans le dossier tests, test03.mjava_tam pour test03.mjava et test05.mjava_tam pour test05.mjava)
